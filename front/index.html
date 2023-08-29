@@ -48,29 +48,61 @@
          <p>오류 신고나 신규 개발 요청, 권한 요청은 프로세스팀으로 연락 부탁드립니다.</p>
          <a href="https://www.notion.so/fnf-digital/Dashff-PowerBi-Tableau-cc85b5218b8949ae81aab9110397d91b" style="color: red"><i class="fa-solid fa-arrow-up-right-from-square"></i> 요청 페이지</a>
      </div>
+     <h1>download link</h1>
      <div id="data-container"></div>
 
      <!-- <script type="module" src="script.js" ></script> -->
      <script>
-        fetch('/api/data')
-          .then(response => response.json())
-          .then(data => {
-            console.log('서버에서 받은 데이터!!!!:', data);
-            const dataContainer = document.getElementById('data-container');
+        // JavaScript 코드
+        window.onload = () => {
+fetch('/api/data')
+  .then(response => response.json())
+  .then(data => {
+    const dataContainer = document.getElementById('data-container');
+    
+    // 테이블 생성
+    const table = document.createElement('table');
+    table.classList.add('user-data-table'); // 테이블에 클래스 추가
 
-            
-            // 데이터를 표시할 HTML 문자열 생성
-        const htmlString = `
-        <h2>업데이트 링크</h2>
-        <p>os: ${data[0].user_info}</p>
-        <p>version: ${data[0].email}</p>
-        <p>url: ${data[0].page_nm}</p>
-        `;
-        dataContainer.innerHTML = htmlString;
-          })
-          .catch(error => {
-            console.error('데이터 가져오기 오류:', error);
-          });
+    // 테이블 헤더 생성
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    const headers = ['os', 'version', 'url link'];
+
+    headers.forEach(headerText => {
+      const th = document.createElement('th');
+      th.textContent = headerText;
+      headerRow.appendChild(th);
+    });
+
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // 테이블 바디 생성
+    const tbody = document.createElement('tbody');
+
+    data.forEach(item => {
+      const row = document.createElement('tr');
+      const columns = ['user_info', 'email', 'page_nm'];
+
+      columns.forEach(column => {
+        const cell = document.createElement('td');
+        cell.textContent = item[column];
+        row.appendChild(cell);
+      });
+
+      tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+
+    // 표를 데이터 컨테이너에 추가
+    dataContainer.appendChild(table);
+  })
+  .catch(error => {
+    console.error('데이터 가져오기 오류:', error);
+  });
+};
       </script>
  </body>
  </html>

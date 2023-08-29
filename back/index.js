@@ -44,7 +44,7 @@ const client = new Client({
 client.connect();
 
 client
-  .query('SELECT * FROM dashff.user_log LIMIT 2')
+  .query('SELECT * FROM dashff.user_log LIMIT 5')
   .then((res) => {
     data=res.rows;
     console.log("excute query:",data)
