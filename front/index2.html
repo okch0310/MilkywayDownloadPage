@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dash F&F Home</title>
+</head>
+<body style="background-color: #202A44; margin: 0 auto;
+width: 1000px;">
+    <br><br><br>
+    <div>
+        <div>
+            <h1 style="color:white; ">F&F Dashboard</h1>
+        </div>
+        <hr>
+        <div>
+            <div>
+                <h3 style="color:white; ">보다 강력한 기능을 포함하고 있는 새로운 대시보드 MilkyWay</h3>
+                <h5 style="color:white; ">하기 버튼을 통해 기기에 맞는 OS 파일을 다운로드 바랍니다.</h5>
+                <br><br>
+                <div style=" margin: 0 auto; width: 700px; height: 300px; display: flex; justify-content: center;">
+    
+                    <div style="width: 300px; height:300px; background-color: pink; margin: 0px 20px; border-radius: 5px;">
+                    <div style="width: 100%; height:20%; font-size: 35px; padding: 10px;">Windows</div>
+                        <div style="width: 100%; height:75%;  display: flex; justify-content: center; flex-direction: column; align-items: center;">
+                            <button style="background-color: #202A44; color: white; border: 0px solid #202A44; width: 200px; height: 60px; font-size: 20px; border-radius: 5px;">Ver. 1.2.5 Download</button>
+                        </div>
+                    </div>
+                    <div style="width: 300px; height:300px; background-color: pink; margin: 0px 20px; border-radius: 5px;">
+                        <div style="width: 100%; height:20%; font-size: 35px; padding: 10px;">Mac Os <i class="fa-brands fa-apple"></i></div>
+                            <div style="width: 100%; height:75%;  display: flex; justify-content: center; flex-direction: column; align-items: center;">
+                                <button onclick="dData()" style="background-color: #202A44; color: white; border: 0px solid #202A44; width: 200px; height: 60px; font-size: 20px; border-radius: 5px; margin: 10px;">M1, M2 Ver. 1.2.5 Download</button>
+                                <button onclick="location.href= 'https://s3.ap-northeast-2.amazonaws.com/dashff.fnf.co.kr/milkyway/window_release/MilkyWay%20Setup%201.2.3%28Updater%20%EC%88%98%EC%A0%95%29.exe'" style="background-color: #061b4f; color: white; border: 0px solid #202A44; width: 200px; height: 60px; font-size: 20px; border-radius: 5px;">Intel Ver. 1.2.5 Download</button>
+                            </div>
+                        </div>
+                </div>
+                
+                    
+                </div>
+                <br>
+                <br>
+                <br>
+                <a href="https://www.notion.so/fnf-digital/Milkyway-User-Guide-6a3f660c371449c5a5e757678e807b96?pvs=4" style="color: pink" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> 밀키웨이 설치 가이드(새창)</a>
+            </div>
+        </div>
+        <hr>
+        <div style="font-size: 1rem; display: flex; align-items: center;">
+            <p style="color:white; font-size: 15px;">오류 신고나 신규 개발 요청, 권한 요청은 프로세스팀으로 연락 부탁드립니다. &nbsp;</p>
+            <a href="https://www.notion.so/fnf-digital/Dashff-PowerBi-Tableau-cc85b5218b8949ae81aab9110397d91b" style="color: pink; font-size: 15px;">  요청 페이지</a>
+        </div>
+        <h1>download link</h1>
+        <div id="data-container"></div>
+    
+        <!-- <script type="module" src="script.js" ></script> -->
+        <script>
+           // JavaScript 코드
+           window.onload = () => {
+    fetch('/api/data')
+     .then(response => response.json())
+     .then(data => {
+       const dataContainer = document.getElementById('data-container');
+       
+       // 테이블 생성
+       const table = document.createElement('table');
+       table.classList.add('user-data-table'); // 테이블에 클래스 추가
+    
+       // 테이블 헤더 생성
+       const thead = document.createElement('thead');
+       const headerRow = document.createElement('tr');
+       const headers = ['os', 'version', 'url link'];
+    
+       headers.forEach(headerText => {
+         const th = document.createElement('th');
+         th.textContent = headerText;
+         headerRow.appendChild(th);
+       });
+    
+       thead.appendChild(headerRow);
+       table.appendChild(thead);
+    
+       // 테이블 바디 생성
+       const tbody = document.createElement('tbody');
+    
+       data.forEach(item => {
+         const row = document.createElement('tr');
+         const columns = ['os', 'version', 'download_url'];
+    
+         columns.forEach(column => {
+           const cell = document.createElement('td');
+           cell.textContent = item[column];
+           row.appendChild(cell);
+         });
+    
+         tbody.appendChild(row);
+       });
+    
+       table.appendChild(tbody);
+    
+       // 표를 데이터 컨테이너에 추가
+       dataContainer.appendChild(table);
+     })
+     .catch(error => {
+       console.error('데이터 가져오기 오류:', error);
+     });
+    };
+
+    function dData() {
+       console.log("hello btn clicked")
+    }
+         </script>
+    </div>
+    
+</body>
+</html>

@@ -33,7 +33,7 @@ const __dirname = path.resolve();
 app.get('/', (req, res) => { 
   runIndex()
   console.log("hi",data)
-  res.sendFile(path.join(__dirname, '..', 'front', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'front', 'index2.html'));
 })
 
 app.get('/api/data', (req, res) => {
