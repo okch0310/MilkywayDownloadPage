@@ -34,10 +34,10 @@ const data=[];
 function runIndex(){
 
 const client = new Client({
-  user: "data_user",
+  user: "dashff_user",
   host: "prd-dt-redshift.conhugwtudej.ap-northeast-2.redshift.amazonaws.com",
   database: "fnf",
-  password: "Duser2022!#",
+  password: "Dashff2022!#",
   port: 5439,
 });
 
