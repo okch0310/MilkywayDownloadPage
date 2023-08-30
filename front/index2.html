@@ -113,21 +113,38 @@ width: 1000px;">
      
     };
     function windowsBtn() {
-        const url = versionData[0][0].download_url;
-        console.log("windows",versionData[0][0])
-        window.location.href = url;
+       const url = versionData[0][0];
+       if (url == undefined) {
+        console.log("latest_yn 개수가 0개");
+        alert("최신 버전 업데이트 url 변경중입니다. 잠시 후 다시 시도해주세요.")
+        return;
+        }
+       console.log("url",url)
+       console.log("windows",versionData[0][0])
+       console.log("url.download_url",url.download_url)
+        window.location.href = url.download_url;        
     }
 
     function m1m2MacBtn() {
-        const url = versionData[1][0].download_url;
+        const url = versionData[1][0];
+        if (url == undefined) {
+        console.log("latest_yn 개수가 0개");
+        alert("최신 버전 업데이트 url 변경중입니다. 잠시 후 다시 시도해주세요.")
+        return;
+        }
         console.log("m1m2",versionData[1][0])
-       window.location.href = url;
+        window.location.href = url.download_url;
     }
     
     function intelMacBtn() {
-        const url = versionData[2][0].download_url;
+        const url = versionData[2][0];
+        if (url == undefined) {
+        console.log("latest_yn 개수가 0개");
+        alert("최신 버전 업데이트 url 변경중입니다. 잠시 후 다시 시도해주세요.")
+        return;
+        }
         console.log("intel",versionData[2][0])
-       window.location.href = url;
+        window.location.href = url.download_url;
     }
     
          </script>
