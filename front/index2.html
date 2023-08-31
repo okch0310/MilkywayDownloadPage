@@ -27,6 +27,11 @@
         tr:nth-child(even) {
             background-color: #202A44;
         }
+        
+        /* 추가한 스타일 */
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body style="background-color: #202A44; margin: 0 auto;
@@ -54,7 +59,7 @@ width: 1000px;">
                         <div style="width: 100%; height:20%; font-size: 35px; padding: 10px; "> Mac&nbsp;<i class="fa-brands fa-apple"></i> </div> 
                             <div style="width: 100%; height:75%;  display: flex; justify-content: center; flex-direction: column; align-items: center;">
                                 <button onclick="m1m2MacBtn()" style="background-color: #202A44; color: white; border: 0px solid #202A44; width: 200px; height: 60px; font-size: 20px; border-radius: 5px; margin-bottom:10px; transition: box-shadow 0.3s ease-in-out;" onmouseover="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='0 0 15px rgba(0,0,0,0.5)';" onmouseout="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='none';">M1, M2 Ver. 1.2.5 Download</button>
-                                <button onclick="intelMacBtn()" style="background-color: #202A44; color: white; border: 0px solid #202A44; width: 200px; height: 60px; font-size: 20px; border-radius: 5px; transition: box-shadow 0.3s ease-in-out;" onmouseover="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='0 0 15px rgba(0,0,0,0.5)';" onmouseout="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='none';">Intel Ver. 1.2.5 Download</button>
+                                <button onclick="intelMacBtn()" style="background-color: #202A44; color: white; border: 0px solid #202A44; width: 200px; height: 60px; font-size: 20px; border-radius: 5px; transition: boxShadow 0.3s ease-in-out;" onmouseover="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='0 0 15px rgba(0,0,0,0.5)';" onmouseout="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='none';">Intel Ver. 1.2.5 Download</button>
                             </div>
                         </div>
                 </div>
@@ -72,8 +77,11 @@ width: 1000px;">
             <p style="color:white; font-size: 15px;">오류 신고나 신규 개발 요청, 권한 요청은 프로세스팀으로 연락 부탁드립니다. &nbsp;</p>
             <a href="https://www.notion.so/fnf-digital/Dashff-PowerBi-Tableau-cc85b5218b8949ae81aab9110397d91b" style="color: pink; font-size: 15px;">  요청 페이지</a>
         </div>
-        <h1 style="color:white;">Version History</h1>
-        <div style="color:white;" id="data-container"></div>
+        <button id="toggleTableButton" style="background-color: #202A44; color: white; border: 0px solid #202A44; font-size: 20px; border-radius: 5px;" onmouseover="this.style.backgroundColor='#202A44'; this.style.color='white';" onmouseout="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='none';"><h2><i class="fa-solid fa-angle-down"></i>&nbsp;Version History</h2></button>
+        <div id="tableContainer" class="hidden">
+            <div style="color:white;" id="data-container"></div>
+        </div>
+       
     
         <!-- <script type="module" src="script.js" ></script> -->
         <script>
@@ -168,6 +176,23 @@ width: 1000px;">
         console.log("intel",versionData[2][0])
         window.location.href = url.download_url;
     }
+
+    // 토글 버튼을 가져온다.
+    const toggleTableButton = document.getElementById('toggleTableButton');
+
+    // 표를 감싸는 div 가져온다.
+    const tableContainer = document.getElementById('tableContainer');
+
+    // 토글 버튼 클릭 시 표를 토글하는 이벤트 핸들러를 추가
+    toggleTableButton.addEventListener('click', () => {
+        if (tableContainer.classList.contains('hidden')) {
+            tableContainer.classList.remove('hidden');
+            toggleTableButton.innerHTML = '<h2><i class="fa-solid fa-angle-up"></i>&nbsp;Version History</h2>';
+        } else {
+            tableContainer.classList.add('hidden');
+            toggleTableButton.innerHTML = '<h2><i class="fa-solid fa-angle-down"></i>&nbsp;Version History</h2>'
+        }
+    });
     
          </script>
     </div>
