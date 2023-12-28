@@ -1,109 +1,358 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Dash F&F Home</title>
- </head>
- <body>
-     <br><br><br>
-     <div>
-         <h1>F&F Dashboard</h1>
-     </div>
-     <hr>
-     <br><br><br>
-     <div>
-         <div>
-             <h3>보다 강력한 기능을 포함하고 있는 새로운 대시보드 MilkyWay</h3>
-             <h5>하기 링크를 통해 기기에 맞는 OS 파일을 다운로드 바랍니다.</h5>
-             <br><br>
-             <div>
-                 <div>
-                     <h4>🔵 Window 전용 설치 파일</h4>
-                     <a href="https://fnf365.sharepoint.com/:u:/s/PRCSMLBProcessTeam/ERJJmcdhkddGp_Vvn1yRg4MBgdc3qcpw6B0Jn3Ci7I17sA?e=y6nAet" style="color: blue; padding-left: 30px">Windows 설치 파일 다운로드</a>
-                     <br>
-                 </div>
-                 <div>
-                     <h4>🔵 Mac 전용 설치 파일</h4>
-                     <h6 style="padding-left: 30px">◼ Intel Chip</h6>
-                     <a href="https://fnf365.sharepoint.com/:u:/s/PRCSMLBProcessTeam/EUkXd1EIo6tDuz6yk7OgDDcBYpfumYeM5XOCKgN4t3lj6w?e=Vqnaj7" style="color: blue; padding-left: 30px">Mac Intel 설치 파일 다운로드</a>
-                     <h6 style="padding-left: 30px; margin-top: 20px">◼ M1, M2 Chip</h6>
-                     <a href="https://fnf365.sharepoint.com/:u:/s/PRCSMLBProcessTeam/EdwRJM_7VxBJjRnkxAUv3D8BENtY0R4R6nXs_GBdHxguhg?e=3iPC2K" style="color: blue; padding-left: 30px;">Mac M1, M2 설치 파일 다운로드</a>
-                     <br>
-                 </div>
-             </div>
-             <br>
-             <a href="https://www.notion.so/fnf-digital/Milkyway-User-Guide-6a3f660c371449c5a5e757678e807b96?pvs=4" style="color: blue" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> 밀키웨이 설치 가이드(새창)</a>
-             <br>
-             <br>
-             <h5>현재 보고 계시는 대시보드는 2023년 8월까지 사용 가능합니다.</h5>
-             <a href="#;" style="color: grey; font-size: large;">기존 대시보드로 이동</a>
-         </div>
-     </div>
-     <br>
-     <br><br>
-     <hr>
-     <div style="font-size: 1rem">
-         <p>Explorer와 Safari는 지원하지 않습니다.</p>
-         <p>오류 신고나 신규 개발 요청, 권한 요청은 프로세스팀으로 연락 부탁드립니다.</p>
-         <a href="https://www.notion.so/fnf-digital/Dashff-PowerBi-Tableau-cc85b5218b8949ae81aab9110397d91b" style="color: red"><i class="fa-solid fa-arrow-up-right-from-square"></i> 요청 페이지</a>
-     </div>
-     <h1>download link</h1>
-     <div id="data-container"></div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dash F&F Home</title>
+    <script
+      src="https://kit.fontawesome.com/a7813635a1.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      table {
+        border-collapse: collapse;
+        /* width: 1200px; */
+        margin: 0 auto;
+        border: 1px solid #fff; /* Add a border to the table */
+      }
 
-     <!-- <script type="module" src="script.js" ></script> -->
-     <script>
-        // JavaScript 코드
-        window.onload = () => {
-fetch('/api/data')
-  .then(response => response.json())
-  .then(data => {
-    const dataContainer = document.getElementById('data-container');
-    
-    // 테이블 생성
-    const table = document.createElement('table');
-    table.classList.add('user-data-table'); // 테이블에 클래스 추가
+      th,
+      td {
+        border: 1px solid #fff; /* Add a border to table header and cells */
+        padding: 8px;
+        text-align: left;
+      }
 
-    // 테이블 헤더 생성
-    const thead = document.createElement('thead');
-    const headerRow = document.createElement('tr');
-    const headers = ['os', 'version', 'url link'];
+      th {
+        background-color: #202a44;
+        color: white;
+      }
 
-    headers.forEach(headerText => {
-      const th = document.createElement('th');
-      th.textContent = headerText;
-      headerRow.appendChild(th);
-    });
+      tr:nth-child(even) {
+        background-color: #202a44;
+      }
 
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body style="background-color: #202a44; margin: 0 auto; width: 1150px">
+    <br /><br /><br />
+    <div>
+      <div>
+        <h1 style="color: white">F&F Dashboard</h1>
+      </div>
+      <hr />
+      <div>
+        <div>
+          <h3 style="color: white">
+            보다 강력한 기능을 포함하고 있는 새로운 대시보드 MilkyWay
+          </h3>
+          <h5 style="color: white">
+            하기 버튼을 통해 기기에 맞는 OS 파일을 다운로드 바랍니다.
+          </h5>
+          <br />
+          <br />
 
-    // 테이블 바디 생성
-    const tbody = document.createElement('tbody');
+          <br />
+          <br />
+          <br />
+          <br />
+          <div
+            style="
+              margin: 0 auto;
+              width: 700px;
+              height: 300px;
+              display: flex;
+              justify-content: center;
+            "
+          >
+            <div
+              style="
+                width: 300px;
+                height: 300px;
+                background-color: pink;
+                margin: 0px 20px;
+                border-radius: 5px;
+              "
+            >
+              <div
+                style="width: 100%; height: 20%; font-size: 35px; padding: 10px"
+              >
+                Windows&nbsp;<i class="fa-brands fa-windows"></i>
+              </div>
+              <div
+                style="
+                  width: 100%;
+                  height: 75%;
+                  display: flex;
+                  justify-content: center;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <button
+                  id="windowsDownloadBtn"
+                  onclick="windowsBtn()"
+                  style="
+                    background-color: #202a44;
+                    color: white;
+                    border: 0px solid #202a44;
+                    width: 200px;
+                    height: 60px;
+                    font-size: 20px;
+                    border-radius: 5px;
+                    transition: box-shadow 0.3s ease-in-out;
+                  "
+                  onmouseover="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='0 0 15px rgba(0,0,0,0.5)';"
+                  onmouseout="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='none';"
+                ></button>
+              </div>
+            </div>
+            <div
+              style="
+                width: 300px;
+                height: 300px;
+                background-color: pink;
+                margin: 0px 20px;
+                border-radius: 5px;
+              "
+            >
+              <div
+                style="width: 100%; height: 20%; font-size: 35px; padding: 10px"
+              >
+                Mac&nbsp;<i class="fa-brands fa-apple"></i>
+              </div>
+              <div
+                style="
+                  width: 100%;
+                  height: 75%;
+                  display: flex;
+                  justify-content: center;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <button
+                  id="m1m2MacDownloadBtn"
+                  onclick="m1m2MacBtn()"
+                  style="
+                    background-color: #202a44;
+                    color: white;
+                    border: 0px solid #202a44;
+                    width: 200px;
+                    height: 60px;
+                    font-size: 20px;
+                    border-radius: 5px;
+                    margin-bottom: 10px;
+                    transition: box-shadow 0.3s ease-in-out;
+                  "
+                  onmouseover="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='0 0 15px rgba(0,0,0,0.5)';"
+                  onmouseout="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='none';"
+                >
+                  M1, M2 Ver. 1.2.5 Download
+                </button>
+                <button
+                  id="intelMacDownloadBtn"
+                  onclick="intelMacBtn()"
+                  style="
+                    background-color: #202a44;
+                    color: white;
+                    border: 0px solid #202a44;
+                    width: 200px;
+                    height: 60px;
+                    font-size: 20px;
+                    border-radius: 5px;
+                    transition: boxShadow 0.3s ease-in-out;
+                  "
+                  onmouseover="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='0 0 15px rgba(0,0,0,0.5)';"
+                  onmouseout="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='none';"
+                >
+                  Intel Ver. 1.2.5 Download
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
 
-    data.forEach(item => {
-      const row = document.createElement('tr');
-      const columns = ['user_info', 'email', 'page_nm'];
+        <a
+          href="https://www.notion.so/fnf-digital/Milkyway-User-Guide-6a3f660c371449c5a5e757678e807b96?pvs=4"
+          style="color: pink"
+          target="_blank"
+          ><i class="fa-solid fa-arrow-up-right-from-square"></i> 밀키웨이 설치
+          가이드 (새창)</a
+        >
+      </div>
+    </div>
+    <hr />
+    <div style="font-size: 1rem; display: flex; align-items: center">
+      <p style="color: white; font-size: 15px">
+        오류 신고나 신규 개발 요청, 권한 요청은 프로세스팀으로 연락
+        부탁드립니다. &nbsp;
+      </p>
+      <a
+        href="https://www.notion.so/fnf-digital/Dashff-PowerBi-Tableau-cc85b5218b8949ae81aab9110397d91b"
+        style="color: pink; font-size: 15px"
+        ><i class="fa-solid fa-arrow-up-right-from-square"></i> 요청 페이지</a
+      >
+    </div>
+    <button
+      id="toggleTableButton"
+      style="
+        background-color: #202a44;
+        color: white;
+        border: 0px solid #202a44;
+        font-size: 20px;
+        border-radius: 5px;
+      "
+      onmouseover="this.style.backgroundColor='#202A44'; this.style.color='white';"
+      onmouseout="this.style.backgroundColor='#202A44'; this.style.color='white'; this.style.boxShadow='none';"
+    >
+      <h2><i class="fa-solid fa-angle-down"></i>&nbsp;Version History</h2>
+    </button>
+    <div id="tableContainer" class="hidden">
+      <div style="color: white" id="data-container"></div>
+    </div>
 
-      columns.forEach(column => {
-        const cell = document.createElement('td');
-        cell.textContent = item[column];
-        row.appendChild(cell);
+    <!-- <script type="module" src="script.js" ></script> -->
+    <script>
+      let versionData;
+      // JavaScript 코드
+      window.onload = () => {
+        fetch("/api/data")
+          .then((response) => response.json())
+          .then((data) => {
+            const dataContainer = document.getElementById("data-container");
+            versionData = data;
+            console.log("versionData>>>", versionData);
+
+            // 테이블 생성
+            const table = document.createElement("table");
+            table.classList.add("user-data-table"); // 테이블에 클래스 추가
+            const windowsDownloadBtn =
+              document.getElementById("windowsDownloadBtn");
+            if (windowsDownloadBtn) {
+              const windowsVersion = versionData[0][0].version;
+              console.log("windowsDownloadBtn", versionData[0][0].version);
+              windowsDownloadBtn.textContent = `Ver. ${windowsVersion} Download`;
+            }
+            if (m1m2MacDownloadBtn) {
+              const m1m2MacVersion = versionData[1][0].version;
+              console.log("m1m2MacDownloadBtn", versionData[1][0].version);
+              m1m2MacDownloadBtn.textContent = `M1, M2 Ver. ${m1m2MacVersion} Download`;
+            }
+            if (intelMacDownloadBtn) {
+              const intelMacVersion = versionData[2][0].version;
+              console.log("intelMacDownloadBtn", versionData[2][0].version);
+              intelMacDownloadBtn.textContent = `Intel Ver. ${intelMacVersion} Download`;
+            }
+            // 테이블 헤더 생성
+            const thead = document.createElement("thead");
+            const headerRow = document.createElement("tr");
+            const headers = ["Os", "Version", "Download Link"];
+
+            headers.forEach((headerText) => {
+              const th = document.createElement("th");
+              th.textContent = headerText;
+              headerRow.appendChild(th);
+            });
+
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            // 테이블 바디 생성
+            const tbody = document.createElement("tbody");
+            console.log("data >>> ", data);
+            data[3].forEach((item) => {
+              const row = document.createElement("tr");
+              const columns = ["os", "version", "download_url"];
+
+              columns.forEach((column) => {
+                const cell = document.createElement("td");
+                cell.textContent = item[column];
+                row.appendChild(cell);
+              });
+
+              tbody.appendChild(row);
+            });
+
+            table.appendChild(tbody);
+
+            // 표를 데이터 컨테이너에 추가
+            dataContainer.appendChild(table);
+          })
+          .catch((error) => {
+            console.error("데이터 가져오기 오류:", error);
+          });
+      };
+      function windowsBtn() {
+        const url = versionData[0][0];
+        if (url == undefined) {
+          console.log("latest_yn 개수가 0개");
+          alert(
+            "최신 버전 업데이트 url 변경중입니다. 잠시 후 다시 시도해주세요."
+          );
+          return;
+        }
+        console.log("url", url);
+        console.log("windows", versionData[0][0]);
+        console.log("url.download_url", url.download_url);
+        window.location.href = url.download_url;
+      }
+
+      function m1m2MacBtn() {
+        const url = versionData[1][0];
+        if (url == undefined) {
+          console.log("latest_yn 개수가 0개");
+          alert(
+            "최신 버전 업데이트 url 변경중입니다. 잠시 후 다시 시도해주세요."
+          );
+          return;
+        }
+        console.log("m1m2", versionData[1][0]);
+        window.location.href = url.download_url;
+      }
+
+      function intelMacBtn() {
+        const url = versionData[2][0];
+        if (url == undefined) {
+          console.log("latest_yn 개수가 0개");
+          alert(
+            "최신 버전 업데이트 url 변경중입니다. 잠시 후 다시 시도해주세요."
+          );
+          return;
+        }
+        console.log("intel", versionData[2][0]);
+        window.location.href = url.download_url;
+      }
+
+      // 토글 버튼을 가져온다.
+      const toggleTableButton = document.getElementById("toggleTableButton");
+
+      // 표를 감싸는 div 가져온다.
+      const tableContainer = document.getElementById("tableContainer");
+
+      // 토글 버튼 클릭 시 표를 토글하는 이벤트 핸들러를 추가
+      toggleTableButton.addEventListener("click", () => {
+        if (tableContainer.classList.contains("hidden")) {
+          tableContainer.classList.remove("hidden");
+          toggleTableButton.innerHTML =
+            '<h2><i class="fa-solid fa-angle-up"></i>&nbsp;Version History</h2>';
+        } else {
+          tableContainer.classList.add("hidden");
+          toggleTableButton.innerHTML =
+            '<h2><i class="fa-solid fa-angle-down"></i>&nbsp;Version History</h2>';
+        }
       });
-
-      tbody.appendChild(row);
-    });
-
-    table.appendChild(tbody);
-
-    // 표를 데이터 컨테이너에 추가
-    dataContainer.appendChild(table);
-  })
-  .catch(error => {
-    console.error('데이터 가져오기 오류:', error);
-  });
-};
-      </script>
- </body>
- </html>
- 
+    </script>
+    <!-- </div> -->
+  </body>
+</html>
